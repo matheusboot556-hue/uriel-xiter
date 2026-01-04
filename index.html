@@ -59,7 +59,11 @@
     <div class="row"><input type="checkbox" onchange="addLog('NORECOIL ACTIVE')"> NO RECOIL</div>
     
     <button onclick="abrirFF()">JOGAR AGORA</button>
-</div>
+<  function abrirFF() {
+    addLog("Injetando no Free Fire...");
+    window.location.href = "intent:#Intent;package=com.dts.freefireth;end";
+}
+
 
 <script>
     function toggleMenu() {
