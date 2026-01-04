@@ -86,12 +86,15 @@
     }
 
     function logar() {
-        if(document.getElementById('key').value === "URIEL") {
-            document.getElementById('login').classList.add('hidden');
-            document.getElementById('menu').classList.remove('hidden');
-            addLog("System Authorized");
-        } else { alert("KEY INVÁLIDA"); }
+    var keyInput = document.getElementById('key').value;
+    if (keyInput === "URIEL") {
+        document.getElementById('login').classList.add('hidden');
+        document.getElementById('menu').classList.remove('hidden');
+        addLog("Sistema Autorizado");
+    } else {
+        alert("KEY INVÁLIDA");
     }
+
 
     function abrirFF() {
     addLog("Injetando no Free Fire...");
