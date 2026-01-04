@@ -86,19 +86,30 @@
     }
 
     function logar() {
-    var keyInput = document.getElementById('key').value;
-    if (keyInput === "URIEL") {
-        document.getElementById('login').classList.add('hidden');
+    var keyDigitada = document.getElementById('key').value;
+    if (keyDigitada === "URIEL") {
+        document.getElementById('login').style.display = 'none';
         document.getElementById('menu').classList.remove('hidden');
         addLog("Sistema Autorizado");
     } else {
         alert("KEY INVÁLIDA");
     }
+}
 
-
-    function abrirFF() {
+function abrirFF() {
     addLog("Injetando no Free Fire...");
     window.location.href = "intent:#Intent;package=com.dts.freefireth;end";
+}
+
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('hidden');
+}
+
+function addLog(msg) {
+    const con = document.getElementById('console');
+    con.innerHTML += "> " + msg + "<br>";
+    con.scrollTop = con.scrollHeight;
 }
 
 </script>
