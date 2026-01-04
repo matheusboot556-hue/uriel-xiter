@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URIEL XITER // FLOAT MENU</title>
+    <style>
+        body { background: #000; color: #f0f; font-family: 'Courier New', monospace; margin: 0; overflow: hidden; }
+        
+        /* Botão Flutuante */
+        #float-btn {
+            position: fixed; top: 20px; right: 20px; width: 50px; height: 50px;
+            background: #f0f; border-radius: 50%; border: 2px solid #fff;
+            box-shadow: 0 0 15px #f0f; z-index: 999; display: flex;
+            justify-content: center; align-items: center; font-weight: bold;
+            color: #000; cursor: pointer; font-size: 10px;
+        }
+
+        .panel { 
+            width: 300px; padding: 20px; border: 2px solid #f0f; border-radius: 15px; 
+            background: rgba(10, 0, 10, 0.95); box-shadow: 0 0 25px #f0f; 
+            text-align: center; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); z-index: 998;
+        }
+
+        .hidden { display: none; }
+        #console { 
+            width: 100%; height: 80px; background: #050505; border: 1px solid #404; 
+            margin: 10px 0; border-radius: 5px; overflow: hidden; 
+            text-align: left; padding: 5px; font-size: 9px; color: #0f0; 
+        }
+
+        .row { display: flex; align-items: center; margin: 10px 0; font-size: 11px; }
+        input[type="checkbox"] { width: 18px; height: 18px; accent-color: #f0f; margin-right: 10px; }
+        button { 
+            width: 100%; padding: 12px; background: #f0f; border: none; 
+            border-radius: 5px; font-weight: bold; cursor: pointer; color: #000; 
+            text-transform: uppercase; box-shadow: 0 0 10px #f0f;
+        }
+    </style>
+</head>
+<body>
+
+<div id="float-btn" onclick="toggleMenu()">UX</div>
+
+<div class="panel" id="login">
+    <h2 style="margin:0; font-size:18px;">URIEL XITER</h2>
+    <p style="font-size:9px;">SISTEMA V.I.P</p>
+    <input type="text" id="key" placeholder="KEY" style="width:80%; padding:10px; margin-bottom:10px; background:#000; border:1px solid #f0f; color:#fff; text-align:center;">
+    <button onclick="logar()">ENTRAR</button>
+</div>
+
+<div class="panel hidden" id="menu">
+    <h2 style="margin:0; font-size:18px;">MENU MOD</h2>
+    <div id="console"></div>
+    
+    <div class="row"><input type="checkbox" onchange="addLog('ESP ACTIVE')"> ESP (VISUAL)</div>
+    <div class="row"><input type="checkbox" onchange="addLog('AIMLOCK INJECTED')"> AIMLOCK</div>
+    <div class="row"><input type="checkbox" onchange="addLog('NORECOIL ACTIVE')"> NO RECOIL</div>
+    
+    <button onclick="abrirFF()">JOGAR AGORA</button>
+</div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        const login = document.getElementById('login');
+        if (login.classList.contains('hidden')) {
+            menu.classList.toggle('hidden');
+        }
+    }
+
+    function addLog(msg) {
+        const con = document.getElementById('console');
+        con.innerHTML += "> " + msg + "<br>";
+        con.scrollTop = con.scrollHeight;
+    }
+
+    function logar() {
+        if(document.getElementById('key').value === "URIEL") {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('menu').classList.remove('hidden');
+            addLog("System Authorized");
+        } else { alert("KEY INVÁLIDA"); }
+    }
+
+    function abrirFF() {
+        addLog("Injecting into Free Fire...");
+        setTimeout(() => {
+            window.location.href = "intent:#Intent;package=com.dts.freefireth;end";
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
